@@ -63,21 +63,24 @@
     
     function formatDate(date, usa)
     {
-        return (usa ?
-            ((date.getMonth() + 1) + '/' + date.getDate()) :
-            (date.getDate() + '/' + (date.getMonth() + 1))
-        ) + '/' + date.getFullYear(); 
+	
+	var returnYear = date.getFullYear(); 
+	var returnMonth = (date.getMonth()+1);
+	var returnDay = date.getDate();
+	
+	if(returnDay < 10)
+	returnDay = '0' + returnDay;
+	if(returnMonth < 10)
+	returnMonth = '0' + returnMonth;
+	
+	return (returnYear + '-' + returnMonth + '-' + returnDay);
     }
+	
     
     function parseDate(date, usa)
     {
-        if (usa) return new Date(date);
-        a = date.split(/[\.\-\/]/);
-        var day = a.shift();
-        var month = a.shift();
-        a.unshift(day);
-        a.unshift(month);
-        return new Date(a.join('/'));
+        a = date.split(/[-]/);
+        return new Date(a.join('-'));
     }
     
     function formatTime(hour, minute, iso)
