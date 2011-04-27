@@ -1,3 +1,8 @@
+
+# Attention - this is a custom/hacked version of the plugin to fit some EU dates
+
+## Date is always formatted as yyyy-mm-dd (month and day are always two digits)
+
 # Calendrical
 
 ## What is it?
