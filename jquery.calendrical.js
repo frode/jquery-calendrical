@@ -269,10 +269,13 @@
                             if (options && options.selectTime) {
                                 options.selectTime(timeText);
                             }
+							
+							$('<li />').toggle();
                         }).mousemove(function() {
                             $('li.selected', ul).removeClass('selected');
                         })
                     ).appendTo(ul);
+					  
                     
                     //Set to scroll to the default hour, unless already set
                     if (!scrollTo && hour == options.defaultHour) {
@@ -371,13 +374,11 @@
                     }
                 );
             }).blur(function() {
-                if (within){
-                    if (div) element.focus();
-                    return;
-                }
-                if (!div) return;
-                div.remove();
-                div = null;
+				if (!within && div){
+				  div.remove();
+				  div = null;
+				  }
+				return;
             });
         });
     };
@@ -455,13 +456,11 @@
                 
                 renderTimeSelect(div, opts);
             }).blur(function() {
-                if (within){
-                    if (div) element.focus();
-                    return;
-                }
-                if (!div) return;
-                div.remove();
-                div = null;
+				if (!within && div){
+				  div.remove();
+				  div = null;
+				  }
+				return;
             });
         });
     },
